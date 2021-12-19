@@ -1,7 +1,7 @@
 #
 # .zshrc
 #
-# @author Jeff Geerling
+# @author Harald Oehl
 #
 
 # Colors.
@@ -19,7 +19,7 @@ export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 plugins=(git brew history kubectl history-substring-search)
 
 # Custom $PATH with extra locations.
-export PATH=$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$PATH
 
 # Bash-style time output.
 export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
@@ -57,7 +57,7 @@ autoload -Uz compinit && compinit
 # Case insensitive.
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
-# Git upstream branch syncer.
+# Git upstream branch syncer. 
 # Usage: gsync master (checks out master, pull upstream, push origin).
 function gsync() {
  if [[ ! "$1" ]] ; then
@@ -81,20 +81,20 @@ export HOMEBREW_AUTO_UPDATE_SECS=604800
 
 # Super useful Docker container oneshots.
 # Usage: dockrun, or dockrun [centos7|fedora27|debian9|debian8|ubuntu1404|etc.]
-dockrun() {
- docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
-}
+#dockrun() {
+# docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
+#}
 
 # Enter a running Docker container.
-function denter() {
- if [[ ! "$1" ]] ; then
-     echo "You must supply a container ID or name."
-     return 0
- fi
-
- docker exec -it $1 bash
- return 0
-}
+#function denter() {
+# if [[ ! "$1" ]] ; then
+#     echo "You must supply a container ID or name."
+#     return 0
+# fi
+#
+# docker exec -it $1 bash
+# return 0
+#}
 
 # Delete a given line number in the known_hosts file.
 knownrm() {
@@ -106,8 +106,6 @@ knownrm() {
  fi
 }
 
-# Allow Composer to use almost as much RAM as Chrome.
-export COMPOSER_MEMORY_LIMIT=-1
 
 # Ask for confirmation when 'prod' is in a command string.
 #prod_command_trap () {
