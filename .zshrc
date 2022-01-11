@@ -4,8 +4,15 @@
 # @author Harald Oehl
 #
 
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="eastwood"
+zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' frequency 7
+source $ZSH/oh-my-zsh.sh
+
+
 # Colors.
-unset LSCOLORS
+#unset LSCOLORS
 export CLICOLOR=1
 export CLICOLOR_FORCE=1
 
@@ -13,13 +20,13 @@ export CLICOLOR_FORCE=1
 unsetopt nomatch
 
 # Nicer prompt.
-export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
+#export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
 # Enable plugins.
 plugins=(git brew history kubectl history-substring-search)
 
 # Custom $PATH with extra locations.
-export PATH=$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$PATH
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$PATH
 
 # Bash-style time output.
 export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
