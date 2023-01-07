@@ -10,7 +10,6 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 7
 source $ZSH/oh-my-zsh.sh
 
-
 # Colors.
 #unset LSCOLORS
 export CLICOLOR=1
@@ -23,10 +22,12 @@ unsetopt nomatch
 #export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
 # Enable plugins.
-plugins=(git brew history kubectl history-substring-search)
+plugins=(git brew history kubectl history-substring-search poetry)
 
 # Custom $PATH with extra locations.
-export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$PATH
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$HOME/flutter/bin:/usr/local/git/bin:$HOME/.local/bin/:$PATH
+export PATH="$PATH:~/flutter/bin"
+
 
 # Bash-style time output.
 export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
@@ -130,3 +131,9 @@ knownrm() {
 #}
 #shopt -s extdebug
 #trap prod_command_trap DEBUG
+
+# pnpm
+export PNPM_HOME="/Users/haraldo/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+function gam() { "/Users/haraldo/bin/gam/gam" "$@" ; }
